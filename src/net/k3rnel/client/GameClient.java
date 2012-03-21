@@ -176,17 +176,18 @@ public class GameClient extends BasicGame {
 		/*
 		 * Setup variables
 		 */
-		m_fontLarge = new AngelCodeFont(m_filepath+"res/fonts/dp.fnt",m_filepath+"res/fonts/dp.png");
-		m_fontSmall = new AngelCodeFont(m_filepath+"res/fonts/dp-small.fnt", m_filepath+"res/fonts/dp-small.png");
-
+	
 		//		Player.loadSpriteFactory();
 
 		loadSprites();
 
 		try {
-			/*DOES NOT WORK YET!!!
-			 */
-			m_trueTypeFont = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/PokeFont.ttf"))
+		   m_fontLarge = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraSe.ttf"))
+	                .deriveFont(java.awt.Font.PLAIN, 10), false);
+	        m_fontSmall = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraMono.ttf"))
+	                .deriveFont(java.awt.Font.PLAIN, 10), false);
+
+			m_trueTypeFont = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraSe.ttf"))
 					.deriveFont(java.awt.Font.PLAIN, 10), false);
 			//m_trueTypeFont = m_fontSmall;
 		} catch (Exception e) {e.printStackTrace(); m_trueTypeFont = m_fontSmall;}
