@@ -48,7 +48,6 @@ import net.k3rnel.client.ui.frames.CharacterSelectDialog;
 import net.k3rnel.client.ui.frames.PlayerPopupDialog;
 import net.k3rnel.client.utils.FileListing;
 
-import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -184,12 +183,10 @@ public class GameClient extends BasicGame {
 		try {
 		   m_fontLarge = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraSe.ttf"))
 	                .deriveFont(java.awt.Font.PLAIN, 10), false);
-	        m_fontSmall = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraMono.ttf"))
+		   m_fontSmall = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraMono.ttf"))
 	                .deriveFont(java.awt.Font.PLAIN, 10), false);
-
-			m_trueTypeFont = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraSe.ttf"))
+		   m_trueTypeFont = new TrueTypeFont(java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, new File(m_filepath+"res/fonts/VeraSe.ttf"))
 					.deriveFont(java.awt.Font.PLAIN, 10), false);
-			//m_trueTypeFont = m_fontSmall;
 		} catch (Exception e) {e.printStackTrace(); m_trueTypeFont = m_fontSmall;}
 		/*
 		 * Time/Weather Services
@@ -763,7 +760,7 @@ public class GameClient extends BasicGame {
 
 		try {
 			// need to pull in size from preferences
-			gc = new AppGameContainer(new GameClient("K3RNEL: Arena (v0.0.1a)"),
+			gc = new AppGameContainer(new GameClient("Distro Wars (v0.0.1a)"),
 					m_width, m_height, fullscreen);
 			gc.setTargetFrameRate(50);
 			gc.start();
