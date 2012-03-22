@@ -40,47 +40,6 @@ public final class FileListing {
 		List<File> files = FileListing.getFileListing(startingDirectory);
 		return files;
 	}
-	
-	/**
-	 * Demonstrate use.
-	 * 
-	 * @param aArgs - <tt>aArgs[0]</tt> is the full name of an existing 
-	 * directory that can be read.
-	 * @throws Exception 
-	 */
-	public static void main(String[] args) throws Exception {
-		File startingDirectory= new File("../PokenetClientVenonat/");
-		List<File> files = FileListing.getFileListing(startingDirectory);
-		ArrayList<String> updates = new ArrayList<String>();
-		//print out all file names, in the the order of File.compareTo()
-		for(File file : files ){
-			String filename = file.getAbsolutePath();
-			filename = filename.replace("/home/Nushio/Workspace/PokenetContentServer/../PokenetClientVenonat/","");
-			if(file.isFile())
-				updates.add("|"+filename+" |+"+filename+" |"+"mkdir");
-		}
-
-		File f = new File("updates.txt");
-		if(f.exists())
-			f.delete();
-		try {
-			PrintWriter pw = new PrintWriter(f);
-			pw.println("--v0.1--");
-			pw.println("--------");
-			pw.println("-|Initial Installation|-");
-			pw.println("--------");
-			for (int s = 0; s < updates.size(); s++){
-				pw.println(updates.get(s));
-			}
-			pw.println("-EOF-");
-			pw.flush();
-			pw.close();
-
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
 
 	/**
 	 * Recursively walk a directory tree and return a List of all

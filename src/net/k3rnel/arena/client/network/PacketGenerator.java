@@ -19,6 +19,7 @@ import net.k3rnel.arena.client.GameClient;
 import net.k3rnel.arena.client.backend.entity.Player.Direction;
 import net.k3rnel.arena.client.network.NetworkProtocols.LoginData;
 import net.k3rnel.arena.client.network.NetworkProtocols.RegistrationData;
+import net.k3rnel.arena.client.utils.Hasher;
 
 import com.esotericsoftware.kryonet.Connection;
 
@@ -178,38 +179,6 @@ public class PacketGenerator {
 	 * @return
 	 */
 	private String getPasswordHash(String user, String password) {
-		String salt = "This is how I roll. Seriously.";
-		String user_lowercase = user.toLowerCase();
-		
-		// mix the user with the salt to create a unique salt
-		String uniqueSalt = "";
-		for (int i = 0; i < user_lowercase.length(); i++) {
-			uniqueSalt = uniqueSalt + user_lowercase.substring(i, i+1) + salt.substring(i, i+1);
-			// last iteration, add remaining salt to the end
-			if (i == user_lowercase.length() - 1)
-				uniqueSalt = uniqueSalt + salt.substring(i+1);
-		}
-		
-		Whirlpool hasher = new Whirlpool();
-		hasher.NESSIEinit();
-		
-		//add plaintext password with salt to hasher
-		hasher.NESSIEadd(password + uniqueSalt);
-		
-		// create array to hold the hashed bytes
-		byte[] hashed = new byte[64];
-		
-		// run the hash
-		hasher.NESSIEfinalize(hashed);
-		
-		// turn the byte array into a hexstring
-        char[] val = new char[2*hashed.length];
-        String hex = "0123456789ABCDEF";
-        for (int i = 0; i < hashed.length; i++) {
-            int b = hashed[i] & 0xff;
-            val[2*i] = hex.charAt(b >>> 4);
-            val[2*i + 1] = hex.charAt(b & 15);
-        }
-        return String.valueOf(val);
+	    return new Hasher().SHA1(new Hasher().SHA1(user.toLowerCase().trim())+new Hasher().SHA1(password.trim()));
 	}
 }
