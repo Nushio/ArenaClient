@@ -51,9 +51,11 @@ public class NetworkProtocols {
 	static public class LoginData {
 		public String username;
 		public String password;
-		public String language;
+		public int language;
 		public boolean force;
 		public int state;
+		public int hours;
+		public int minutes;
 	}
 	static public class RegistrationData {
 		public String username;

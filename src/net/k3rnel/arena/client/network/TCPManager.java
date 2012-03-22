@@ -59,11 +59,10 @@ public class TCPManager {
 					System.out.println(data.state);
 					m_game.getLoginScreen().setVisible(false);
 					m_game.getLoadingScreen().setVisible(false);
-					m_game.setPlayerId(0);//TODO: Display player id
+					m_game.setPlayerId(0);//TODO: Save player id
 					m_game.getUi().setVisible(true);
 					m_game.getUi().getChat().setVisible(true);
-//	                m_game.getTimeService().setTime(Integer.parseInt(details[1].substring(0, 2)), 
-//	                        Integer.parseInt(details[1].substring(2)));
+	                m_game.getTimeService().setTime(data.hours,data.minutes);
 				} else if(object instanceof RegistrationData){
 					RegistrationData data = (RegistrationData)object;
 					System.out.println(data.state);
