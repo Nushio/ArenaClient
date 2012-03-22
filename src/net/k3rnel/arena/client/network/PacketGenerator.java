@@ -62,28 +62,28 @@ public class PacketGenerator {
 		// store values in case we need to attempt to update to the salted hashes
 		this.lastUsername = username;
 		this.lastPassword = password;
-		char language = '0';
+		int language = 0;
 		if(GameClient.getLanguage().equalsIgnoreCase("english")) {
-			language = '0';
+			language = 0;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("portuguese")) {
-			language = '1';
+			language = 1;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("italian")) {
-			language = '2';
+			language = 2;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("french")) {
-			language = '3';
+			language = 3;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("finnish")) {
-			language = '4';
+			language = 4;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("spanish")) {
-			language = '5';
+			language = 5;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("dutch")) {
-			language = '6';
+			language = 6;
 		} else if(GameClient.getLanguage().equalsIgnoreCase("german")) {
-			language = '7';
+			language = 7;
 		}
 		LoginData data = new LoginData();
 		data.username = username;
 		data.password = getPasswordHash(username, password);
-		data.language = language+"";
+		data.language = language;
 		data.force = false;
 		m_tcpConnection.sendTCP(data);
 	}
