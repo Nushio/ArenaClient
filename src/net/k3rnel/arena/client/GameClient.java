@@ -48,7 +48,6 @@ import net.k3rnel.arena.client.ui.frames.CharacterSelectDialog;
 import net.k3rnel.arena.client.ui.frames.PlayerPopupDialog;
 import net.k3rnel.arena.client.utils.FileListing;
 
-import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;

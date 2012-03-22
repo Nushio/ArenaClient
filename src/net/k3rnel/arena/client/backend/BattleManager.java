@@ -15,8 +15,6 @@
 */
 package net.k3rnel.arena.client.backend;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import net.k3rnel.arena.client.GameClient;
 import net.k3rnel.arena.client.backend.entity.OurPlayer;
