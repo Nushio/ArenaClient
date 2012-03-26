@@ -53,20 +53,42 @@ public class NetworkProtocols {
 		public String password;
 		public int language;
 		public boolean force;
+		/**
+		 * State 0 is Successful login. Awesome. 
+		 * State 1 is Error, Player Limit Reached.<br>
+		 * State 2 is Error, Database is AFK.<br>
+		 * State 3 is Error, Username or Password Wrong.<br>
+		 * State 99 is Error, F.U.B.A.R. Check Logs.<br>
+		 */
 		public int state;
 		public int hours;
-		public int minutes;
+        public int minutes;
 	}
+	
 	static public class RegistrationData {
 		public String username;
 		public String password;
 		public String email;
+		/**
+		 * State 0 means Success, everything is A-Ok!<br>
+	     * State 1 means Error, Username exists or is 'forbidden'.<br>
+	     * State 2 means Error, Email taken.<br>
+	     * State 3 is Error, email's too long.<br>
+	     * State 4 is Error, Database is offline.<br>
+	     * State 99 is Error, What a Terrible Failure.<br>
+	     *
+	     */
 		public int state;
 	}
 	static public class PasswordChangeData {
 		public String username;
 		public String oldPassword;
 		public String newPassword;
+		/**
+		 * State 0 means Password Changed
+		 * State 1 means Wrong old password
+		 * State 99 means What a Terrible Failure
+		 */
 		public int state;
 	}
 	//Used for the chatroom. Target is the username, or room name. Rooms start with _
