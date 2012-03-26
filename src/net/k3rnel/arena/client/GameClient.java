@@ -136,9 +136,9 @@ public class GameClient extends BasicGame {
 				options.put("disableWeather", String.valueOf(false));
 			}
 			m_instance = new GameClient("Distro Wars (v0.0.1)");
-			m_soundPlayer = new SoundManager();
+			/*m_soundPlayer = new SoundManager();
 			m_soundPlayer.mute(Boolean.parseBoolean(options.get("soundMuted")));
-			m_soundPlayer.start();
+			m_soundPlayer.start();*/
 			m_disableMaps = Boolean.parseBoolean(options.get("disableMaps"));
 		} catch (Exception e) { 
 			e.printStackTrace();
