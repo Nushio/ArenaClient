@@ -62,7 +62,7 @@ public class NetworkProtocols {
 		 */
 		public int state;
 		public int hours;
-        public int minutes;
+		public int minutes;
 	}
 	
 	static public class RegistrationData {

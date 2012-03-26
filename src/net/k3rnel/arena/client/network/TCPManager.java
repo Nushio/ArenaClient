@@ -56,6 +56,23 @@ public class TCPManager {
 			public void received (Connection connection, Object object) {
 				if(object instanceof LoginData){
 					LoginData data = (LoginData)object;
+					switch(data.state) {
+					case 0:
+						GameClient.messageDialog("Registration Successful.", GameClient.getInstance().getDisplay());
+						break;
+					case 1:
+						GameClient.messageDialog("Error: Player Limit Reached.", GameClient.getInstance().getDisplay());
+						break;
+					case 2:
+						GameClient.messageDialog("Database Error: Database cannot be reached.", GameClient.getInstance().getDisplay());
+						break;
+					case 3:
+						GameClient.messageDialog("Error: Invalid Username/Password", GameClient.getInstance().getDisplay());
+						break;
+					default:
+						GameClient.messageDialog("Error code: "+data.state+". What a Terrible Failure.", GameClient.getInstance().getDisplay());
+						break;
+					}
 					System.out.println(data.state);
 					m_game.getLoginScreen().setVisible(false);
 					m_game.getLoadingScreen().setVisible(false);
@@ -66,6 +83,26 @@ public class TCPManager {
 				} else if(object instanceof RegistrationData){
 					RegistrationData data = (RegistrationData)object;
 					System.out.println(data.state);
+					switch(data.state) {
+					case 0:
+						GameClient.messageDialog("Registration Successful.", GameClient.getInstance().getDisplay());
+						break;
+					case 1:
+						GameClient.messageDialog("Error: Username exists or is forbidden.", GameClient.getInstance().getDisplay());
+						break;
+					case 2:
+						GameClient.messageDialog("Error: Email already in use.", GameClient.getInstance().getDisplay());
+						break;
+					case 3:
+						GameClient.messageDialog("Error: Email is too long.", GameClient.getInstance().getDisplay());
+						break;
+					case 4:
+						GameClient.messageDialog("Error: Database cannot be reached.", GameClient.getInstance().getDisplay());
+						break;
+					default:
+						GameClient.messageDialog("Error code: "+data.state+". What a Terrible Failure.", GameClient.getInstance().getDisplay());
+						break;
+					}
 					m_game.getLoadingScreen().setVisible(false);
 					m_game.getLoginScreen().showLogin();
 				}
