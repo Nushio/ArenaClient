@@ -58,7 +58,7 @@ public class TCPManager {
 					LoginData data = (LoginData)object;
 					switch(data.state) {
 					case 0:
-						GameClient.messageDialog("Registration Successful.", GameClient.getInstance().getDisplay());
+						GameClient.messageDialog("Login Successful.", GameClient.getInstance().getDisplay());
 						break;
 					case 1:
 						GameClient.messageDialog("Error: Player Limit Reached.", GameClient.getInstance().getDisplay());
