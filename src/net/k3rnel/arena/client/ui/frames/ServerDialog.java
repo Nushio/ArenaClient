@@ -20,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Properties;
 
 import mdes.slick.sui.Button;
 import mdes.slick.sui.Frame;
@@ -35,6 +36,7 @@ import org.newdawn.slick.Color;
 /**
  * Handles server selection
  * @author shadowkanji
+ * @author HeikaHaku
  *
  */
 public class ServerDialog extends Frame {
@@ -54,7 +56,7 @@ public class ServerDialog extends Frame {
 		getContentPane().setX(getContentPane().getX() - 1);
 		getContentPane().setY(getContentPane().getY() + 1);
 		m_black = new Color(0, 0, 0);
-		List<String> translate = Translator.translate("_LOGIN");
+		Properties translate = Translator.translate("_LOGIN");
 		
 		this.setSize(316, 280);
 		this.setLocation((m_gameClient.getWidth() / 2) - 160, 280);
@@ -197,7 +199,7 @@ public class ServerDialog extends Frame {
 			GameClient.setHost(getPrivateServer());
 	}
 	public void reloadStrings(){
-		List<String> translate = Translator.translate("_LOGIN");
+		Properties translate = Translator.translate("_LOGIN");
 		this.setTitle(translate.get(0));
 		m_info.setText(translate.get(1));
 		privateServer.setText(translate.get(2));

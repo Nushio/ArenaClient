@@ -29,6 +29,7 @@ import com.esotericsoftware.kryonet.Listener;
 /**
  * Handles packets received from players over TCP
  * @author Nushio
+ * @author HeikaHaku
  *
  */
 public class TCPManager {
@@ -54,25 +55,17 @@ public class TCPManager {
 			public void connected (Connection connection) {
 			}
 			public void received (Connection connection, Object object) {
+				java.util.Properties prop = net.k3rnel.arena.client.backend.Translator.getInstance().translateText("status");
 				if(object instanceof LoginData){
 					LoginData data = (LoginData)object;
-					switch(data.state) {
-					case 0:
-						GameClient.messageDialog("Login Successful.", GameClient.getInstance().getDisplay());
-						break;
-					case 1:
-						GameClient.messageDialog("Error: Player Limit Reached.", GameClient.getInstance().getDisplay());
-						break;
-					case 2:
-						GameClient.messageDialog("Database Error: Database cannot be reached.", GameClient.getInstance().getDisplay());
-						break;
-					case 3:
-						GameClient.messageDialog("Error: Invalid Username/Password", GameClient.getInstance().getDisplay());
-						break;
-					default:
-						GameClient.messageDialog("Error code: "+data.state+". What a Terrible Failure.", GameClient.getInstance().getDisplay());
-						break;
+					if(data.state == 0) {
+						GameClient.messageDialog((String)(prop.get("login"+data.state)), GameClient.getInstance().getDisplay());
+						//Login.
 					}
+					else if(data.state > 0)
+						GameClient.messageDialog((String)(prop.get("login"+data.state)), GameClient.getInstance().getDisplay());
+					else
+						GameClient.messageDialog(((String)(prop.get("logindefault"))).replaceFirst("{num}",new Integer(data.state).toString()), GameClient.getInstance().getDisplay());
 					System.out.println(data.state);
 					m_game.getLoginScreen().setVisible(false);
 					m_game.getLoadingScreen().setVisible(false);
@@ -83,26 +76,14 @@ public class TCPManager {
 				} else if(object instanceof RegistrationData){
 					RegistrationData data = (RegistrationData)object;
 					System.out.println(data.state);
-					switch(data.state) {
-					case 0:
-						GameClient.messageDialog("Registration Successful.", GameClient.getInstance().getDisplay());
-						break;
-					case 1:
-						GameClient.messageDialog("Error: Username exists or is forbidden.", GameClient.getInstance().getDisplay());
-						break;
-					case 2:
-						GameClient.messageDialog("Error: Email already in use.", GameClient.getInstance().getDisplay());
-						break;
-					case 3:
-						GameClient.messageDialog("Error: Email is too long.", GameClient.getInstance().getDisplay());
-						break;
-					case 4:
-						GameClient.messageDialog("Error: Database cannot be reached.", GameClient.getInstance().getDisplay());
-						break;
-					default:
-						GameClient.messageDialog("Error code: "+data.state+". What a Terrible Failure.", GameClient.getInstance().getDisplay());
-						break;
+					if(data.state == 0) {
+						GameClient.messageDialog((String)(prop.get("register"+data.state)), GameClient.getInstance().getDisplay());
+						//Login.
 					}
+					else if(data.state > 0)
+						GameClient.messageDialog((String)(prop.get("register"+data.state)), GameClient.getInstance().getDisplay());
+					else
+						GameClient.messageDialog(((String)(prop.get("registerdefault"))).replaceFirst("{num}",new Integer(data.state).toString()), GameClient.getInstance().getDisplay());
 					m_game.getLoadingScreen().setVisible(false);
 					m_game.getLoginScreen().showLogin();
 				}

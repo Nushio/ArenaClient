@@ -18,6 +18,7 @@ package net.k3rnel.arena.client.ui;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 import mdes.slick.sui.Button;
@@ -41,6 +42,7 @@ import org.newdawn.slick.Color;
 /**
  * The login screen (contains server selector, login and registration)
  * @author shadowkanji
+ * @author HeikaHaku
  *
  */
 public class LoginScreen extends Window {
@@ -63,7 +65,7 @@ public class LoginScreen extends Window {
 		if(respath==null)
 			respath="";
 		try {
-			List<String> translated = new ArrayList<String>();
+			Properties translated = new Properties();
 			translated = Translator.translate("_LOGIN");
 			/*
 			 * Load the background image

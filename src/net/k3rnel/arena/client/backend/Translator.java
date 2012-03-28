@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 import net.k3rnel.arena.client.GameClient;
@@ -29,50 +30,27 @@ public class Translator {
 	private static Translator m_instance;
 	
 	/**
-	 * Returns a list of translated text
+	 * Returns a properties object of translated text
 	 * @param filename
 	 * @return
 	 */
-	public List<String> translateText(String filename) {
-		List<String> translated = new ArrayList<String>();
+	public Properties translateText(String filename) {
+		Properties translated = new Properties();
 		String respath = System.getProperty("res.path");
-		if(respath==null)
+		if(respath == null)
 			respath="";
 		try {
-			String path = respath+"res/language/" + GameClient.getLanguage() + "/UI/" + filename + ".txt";
+			String path = respath + "res/language/" + GameClient.getLanguage()+"/UI/"+filename +".properties";
 			InputStream in = new FileInputStream(path);
-			if(in != null) {
-				BufferedReader f = new BufferedReader(new InputStreamReader(in));
-				Scanner reader = new Scanner(f);
-				while(reader.hasNextLine()) {
-					translated.add(reader.nextLine().replaceAll("/n", "\n"));
-				}
-				/*if(translated.size()==0){
-					FileInputStream fis = new FileInputStream(f);
-					BufferedInputStream bis = new BufferedInputStream(fis);
-					DataInputStream dis = new DataInputStream(bis);
-					 while (dis.available() != 0) {
-						 // this statement reads the line from the file
-						 translated.add(dis.readLine());
-					 }
-					 fis.close();
-					 bis.close();
-					 dis.close();
-				}*/
-			}else{ //In case of emergencies, load english!
-				try{
-					in = new FileInputStream(respath+"res/language/english/UI/" + filename + ".txt");
-					BufferedReader f = new BufferedReader(new InputStreamReader(in));
-					Scanner reader = new Scanner(f);
-					while(reader.hasNextLine()) {
-						translated.add(reader.nextLine().replaceAll("/n", "\n"));
-					}
-				}catch(Exception e){
-					translated.add("/n"); //If there's no english, display default line. 
-				}
-
+			translated.load(in);//Try loading the current Language.
+		} catch(java.io.FileNotFoundException e) {
+			try {
+				InputStream in = new FileInputStream(respath+"res/language/english/UI/" + filename + ".txt");
+				translated.load(in);//If you can't, load English.
+			} catch(Exception e2) {
+				e2.printStackTrace();
 			}
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return translated;
@@ -88,7 +66,7 @@ public class Translator {
 		return m_instance;
 	}
 	
-	public static List<String> translate(String filename){
+	public static Properties translate(String filename){
 		return Translator.getInstance().translateText(filename);
 	}
 }

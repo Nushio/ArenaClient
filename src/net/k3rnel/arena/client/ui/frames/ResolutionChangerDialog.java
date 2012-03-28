@@ -282,7 +282,7 @@ public class ResolutionChangerDialog extends Frame{
 //		GameClient.getInstance().getDisplay().setHeight(height);
 		this.setVisible(false);
 
-		GameClient.messageDialog(Translator.translate("_GUI").get(19), getDisplay());
+		GameClient.messageDialog((String) Translator.translate("gui").get("changes"), getDisplay());
 		
 		
 		GameClient.getInstance().getOptions().put("width", width + "");

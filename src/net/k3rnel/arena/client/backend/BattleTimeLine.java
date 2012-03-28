@@ -17,6 +17,7 @@ package net.k3rnel.arena.client.backend;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import net.k3rnel.arena.client.GameClient;
 import net.k3rnel.arena.client.ui.BattleCanvas;
@@ -26,11 +27,13 @@ import net.k3rnel.arena.client.ui.frames.BattleSpeechFrame;
  * Handles Battle Events and arranges them for visual purposes.
  * 
  * @author ZombieBear
+ * @author HeikaHaku
+ * 
  */
 public class BattleTimeLine {
   private final BattleSpeechFrame m_narrator;
   private BattleCanvas            m_canvas;
-  List<String>                    m_translator = new ArrayList<String>();
+  Properties                      m_translator = new Properties();
   // Lines for REGEX needed for l10n
   String                          m_monsterName, m_move, m_trainer, m_foundItem;
   int                             m_newHPValue, m_exp, m_dmg, m_earnings,

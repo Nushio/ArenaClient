@@ -1,6 +1,7 @@
 package net.k3rnel.arena.client.ui.frames;
 
 import java.util.List;
+import java.util.Properties;
 
 import mdes.slick.sui.Button;
 import mdes.slick.sui.Frame;
@@ -17,6 +18,7 @@ import net.k3rnel.arena.client.backend.Translator;
 /**
  * Handles the login box
  * @author shadowkanji
+ * @author HeikaHaku
  *
  */
 public class LoginDialog extends Frame {
@@ -33,7 +35,7 @@ public class LoginDialog extends Frame {
 	public LoginDialog() {
 		getContentPane().setX(getContentPane().getX() - 1);
 		getContentPane().setY(getContentPane().getY() + 1);
-		List<String> translated = Translator.translate("_LOGIN");
+		Properties translated = Translator.translate("_LOGIN");
 		this.setBorderRendered(false);
 		this.getTitleBar().setVisible(false);
 		this.setSize(320, 160);

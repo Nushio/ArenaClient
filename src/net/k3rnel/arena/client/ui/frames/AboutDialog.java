@@ -16,6 +16,7 @@
 package net.k3rnel.arena.client.ui.frames;
 
 import java.util.List;
+import java.util.Properties;
 
 import mdes.slick.sui.Frame;
 import mdes.slick.sui.TextArea;
@@ -27,6 +28,7 @@ import org.newdawn.slick.Color;
 /**
  * A window with information about the game
  * @author shadowkanji
+ * @author HeikaHaku
  *
  */
 public class AboutDialog extends Frame {
@@ -41,7 +43,7 @@ public class AboutDialog extends Frame {
 		getContentPane().setY(getContentPane().getY() + 1);
 		m_bg = new Color(0, 0, 0, 140);
 		m_white = new Color(255, 255, 255);
-		List<String> translated = Translator.translate("_LOGIN");
+		Properties translated = Translator.translate("_LOGIN");
 		this.setTitle(translated.get(34));
 		this.setLocation(128, 256);
 		this.setBackground(m_bg);

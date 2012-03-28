@@ -16,6 +16,7 @@
 package net.k3rnel.arena.client.ui.frames;
 
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 import mdes.slick.sui.Button;
@@ -32,6 +33,7 @@ import org.newdawn.slick.Color;
 /**
  * Handles registration dialog
  * @author shadowkanji
+ * @author HeikaHaku
  *
  */
 public class RegisterDialog extends Frame{
@@ -46,7 +48,7 @@ public class RegisterDialog extends Frame{
 	public RegisterDialog() {
 		getContentPane().setX(getContentPane().getX() - 1);
 		getContentPane().setY(getContentPane().getY() + 1);
-		List<String> translated = Translator.translate("_LOGIN");
+		Properties translated = Translator.translate("_LOGIN");
 		this.setVisible(false);
 		this.setSize(320, 300);
 		this.setBackground(new Color(0, 0, 0, 140));
