@@ -43,8 +43,8 @@ public class AboutDialog extends Frame {
 		getContentPane().setY(getContentPane().getY() + 1);
 		m_bg = new Color(0, 0, 0, 140);
 		m_white = new Color(255, 255, 255);
-		Properties translated = Translator.translate("_LOGIN");
-		this.setTitle(translated.get(34));
+		Properties translated = Translator.translate("login");
+		this.setTitle((String) translated.get("aboutdw"));
 		this.setLocation(128, 256);
 		this.setBackground(m_bg);
 		this.setResizable(false);
@@ -69,10 +69,10 @@ public class AboutDialog extends Frame {
 	}
 	
 	public void reloadStrings(){
-		List<String> translated = Translator.translate("_LOGIN");
-		this.setTitle(translated.get(33));
-		m_info.setText(translated.get(34)+"\n\n"+
-				translated.get(35)+"\n"+
-				translated.get(36)+"\n");
+		Properties translated = Translator.translate("login");
+		this.setTitle((String) translated.get("aboutdw"));
+		m_info.setText(translated.get("license")+"\n\n"+
+				translated.get("contributors")+"\n"+
+				translated.get("names")+"\n");
 	}
 }

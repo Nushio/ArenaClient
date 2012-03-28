@@ -56,11 +56,11 @@ public class ServerDialog extends Frame {
 		getContentPane().setX(getContentPane().getX() - 1);
 		getContentPane().setY(getContentPane().getY() + 1);
 		m_black = new Color(0, 0, 0);
-		Properties translate = Translator.translate("_LOGIN");
+		Properties translate = Translator.translate("login");
 		
 		this.setSize(316, 280);
 		this.setLocation((m_gameClient.getWidth() / 2) - 160, 280);
-		this.setTitle(translate.get(0));
+		this.setTitle(translate.get("server")+"");
 		this.setBackground(new Color(0, 0, 0, 140));
 		this.getTitleBar().setForeground(m_black);
 		this.setDraggable(false);
@@ -70,7 +70,7 @@ public class ServerDialog extends Frame {
 		/*
 		 * Create the info label
 		 */
-		m_info = new Label(translate.get(1));
+		m_info = new Label(translate.get("accnote")+"");
 		m_info.pack();
 		m_info.setLocation(24, 8);
 		m_info.setForeground(new Color(255, 255, 255));
@@ -175,7 +175,7 @@ public class ServerDialog extends Frame {
 		this.add(privateIP);
 		
 		privateServer = new Button();
-		privateServer.setText(translate.get(2));
+		privateServer.setText(translate.get("privserv")+"");
 		privateServer.setSize(128, 24);
 		privateServer.setLocation(168, 204);
 		privateServer.addActionListener(new ActionListener() {
@@ -199,9 +199,9 @@ public class ServerDialog extends Frame {
 			GameClient.setHost(getPrivateServer());
 	}
 	public void reloadStrings(){
-		Properties translate = Translator.translate("_LOGIN");
-		this.setTitle(translate.get(0));
-		m_info.setText(translate.get(1));
-		privateServer.setText(translate.get(2));
+		Properties translate = Translator.translate("login");
+		this.setTitle(translate.get("server")+"");
+		m_info.setText(translate.get("accnote")+"");
+		privateServer.setText(translate.get("privserv")+"");
 	}
 }

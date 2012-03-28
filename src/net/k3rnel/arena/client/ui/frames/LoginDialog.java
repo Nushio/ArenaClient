@@ -35,7 +35,7 @@ public class LoginDialog extends Frame {
 	public LoginDialog() {
 		getContentPane().setX(getContentPane().getX() - 1);
 		getContentPane().setY(getContentPane().getY() + 1);
-		Properties translated = Translator.translate("_LOGIN");
+		Properties translated = Translator.translate("login");
 		this.setBorderRendered(false);
 		this.getTitleBar().setVisible(false);
 		this.setSize(320, 160);
@@ -63,7 +63,7 @@ public class LoginDialog extends Frame {
 		m_password.setMaskEnabled(true);
 		this.add(m_password);
 		
-		m_userLabel = new Label(translated.get(5));
+		m_userLabel = new Label(translated.get("username")+"");
 		m_userLabel.pack();
 		m_userLabel.setLocation(m_username.getX() - m_userLabel.getWidth() - 24, 12);
 		m_userLabel.setVisible(true);
@@ -71,7 +71,7 @@ public class LoginDialog extends Frame {
 		m_userLabel.setForeground(m_white);
 		this.add(m_userLabel);
 		
-		m_passLabel = new Label(translated.get(6));
+		m_passLabel = new Label(translated.get("passsword")+"");
 		m_passLabel.pack();
 		m_passLabel.setLocation(m_userLabel.getX(), 40);
 		m_passLabel.setVisible(true);
@@ -79,7 +79,7 @@ public class LoginDialog extends Frame {
 		m_passLabel.setForeground(m_white);
 		this.add(m_passLabel);
 		
-		m_login = new Button(translated.get(7));
+		m_login = new Button(translated.get("login")+"");
 		m_login.setSize(64, 32);
 		m_login.setLocation(m_password.getX(), m_password.getY() + m_password.getHeight() + 8);
 		m_login.setVisible(true);
@@ -93,7 +93,7 @@ public class LoginDialog extends Frame {
 		});
 		this.add(m_login);
 		
-		m_register = new Button(translated.get(8));
+		m_register = new Button(translated.get("register")+"");
 		m_register.setSize(64, 32);
 		m_register.setLocation(m_login.getX() + m_login.getWidth() + 8, m_login.getY());
 		m_register.setVisible(true);
@@ -160,10 +160,10 @@ public class LoginDialog extends Frame {
 	 * Reloads strings with language selected. 
 	 */
 	public void reloadStrings(){
-		List<String> translated = Translator.translate("_LOGIN");
-		m_userLabel.setText(translated.get(5));
-		m_passLabel.setText(translated.get(6));
-		m_login.setText(translated.get(7));
-		m_register.setText(translated.get(8));
+		Properties translated = Translator.translate("login");
+		m_userLabel.setText(translated.get("username")+"");
+		m_passLabel.setText(translated.get("password")+"");
+		m_login.setText(translated.get("login")+"");
+		m_register.setText(translated.get("register")+"");
 	}
 }

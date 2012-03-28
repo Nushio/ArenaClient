@@ -65,7 +65,7 @@ public class TCPManager {
 					else if(data.state > 0)
 						GameClient.messageDialog((String)(prop.get("login"+data.state)), GameClient.getInstance().getDisplay());
 					else
-						GameClient.messageDialog(((String)(prop.get("logindefault"))).replaceFirst("{num}",new Integer(data.state).toString()), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog(((String)(prop.get("logindefault"))).replaceFirst("{num}",data.state+""), GameClient.getInstance().getDisplay());
 					System.out.println(data.state);
 					m_game.getLoginScreen().setVisible(false);
 					m_game.getLoadingScreen().setVisible(false);
@@ -83,7 +83,7 @@ public class TCPManager {
 					else if(data.state > 0)
 						GameClient.messageDialog((String)(prop.get("register"+data.state)), GameClient.getInstance().getDisplay());
 					else
-						GameClient.messageDialog(((String)(prop.get("registerdefault"))).replaceFirst("{num}",new Integer(data.state).toString()), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog(((String)(prop.get("registerdefault"))).replaceFirst("{num}",data.state+""), GameClient.getInstance().getDisplay());
 					m_game.getLoadingScreen().setVisible(false);
 					m_game.getLoginScreen().showLogin();
 				}
