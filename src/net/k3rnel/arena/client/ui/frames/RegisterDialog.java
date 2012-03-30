@@ -15,7 +15,6 @@
 */
 package net.k3rnel.arena.client.ui.frames;
 
-import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
@@ -34,6 +33,7 @@ import org.newdawn.slick.Color;
  * Handles registration dialog
  * @author shadowkanji
  * @author HeikaHaku
+ * @author Nushio
  *
  */
 public class RegisterDialog extends Frame{
@@ -184,16 +184,16 @@ public class RegisterDialog extends Frame{
 							GameClient.getInstance().getPacketGenerator().register(m_username.getText(),
 									m_password.getText(), m_email.getText());
 					} else {
-						GameClient.messageDialog(translated.get(29), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog(translated.get("accepttos")+"", GameClient.getInstance().getDisplay());
 					}
 				} else {
-					GameClient.messageDialog(translated.get(30), GameClient.getInstance().getDisplay());
+					GameClient.messageDialog(translated.get("invalidemail")+"", GameClient.getInstance().getDisplay());
 				}
 			} else {
-				GameClient.messageDialog(translated.get(31), GameClient.getInstance().getDisplay());
+				GameClient.messageDialog(translated.get("passnotmatch")+"", GameClient.getInstance().getDisplay());
 			}
 		} else {
-			GameClient.messageDialog(translated.get(32), GameClient.getInstance().getDisplay());
+			GameClient.messageDialog(translated.get("badusername")+"", GameClient.getInstance().getDisplay());
 		}
 	}
 	

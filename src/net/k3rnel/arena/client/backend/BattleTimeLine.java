@@ -15,8 +15,6 @@
 */
 package net.k3rnel.arena.client.backend;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import net.k3rnel.arena.client.GameClient;
@@ -44,7 +42,7 @@ public class BattleTimeLine {
    * Default constructor
    */
   public BattleTimeLine() {
-    m_translator = Translator.translate("_BATTLE");
+    m_translator = Translator.translate("battle");
     try {
       m_canvas = new BattleCanvas();
     } catch (Exception e) {
@@ -69,7 +67,7 @@ public class BattleTimeLine {
    */
   public void informVictory() {
     m_trainer = GameClient.getInstance().getOurPlayer().getUsername();
-    addSpeech(m_translator.get(10));
+    addSpeech(m_translator.get("victory")+"");
     BattleManager.getInstance().endBattle();
     m_isBattling = false;
   }
@@ -79,7 +77,7 @@ public class BattleTimeLine {
    */
   public void informLoss() {
     m_trainer = GameClient.getInstance().getOurPlayer().getUsername();
-    addSpeech(m_translator.get(11));
+    addSpeech(m_translator.get("loss")+"");
     BattleManager.getInstance().endBattle();
     m_isBattling = false;
   }
@@ -100,7 +98,8 @@ public class BattleTimeLine {
    */
   public void informMoneyGain(int money) {
     m_earnings = money;
-    addSpeech(m_translator.get(19));
+    String translated = m_translator.get("earncash")+"";
+    addSpeech(translated.replace("{0}",money+""));
   }
 
   /**
@@ -111,7 +110,8 @@ public class BattleTimeLine {
   public void informLevelUp(String monster, int level) {
     m_monsterName = monster;
     m_level = level;
-    addSpeech(m_translator.get(20));
+    String translated = m_translator.get("levelup")+"";
+    addSpeech(translated.replace("{0}",monster).replace("{1}",level+""));
   }
 
   /**

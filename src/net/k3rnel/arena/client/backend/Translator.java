@@ -15,17 +15,19 @@
 */
 package net.k3rnel.arena.client.backend;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
-import java.util.Scanner;
 
 import net.k3rnel.arena.client.GameClient;
 
+/**
+ * Translates the Interface using Java Properties
+ * 
+ * @author HeikaHaku
+ * @author Nushio
+ *
+ */
 public class Translator {
 	private static Translator m_instance;
 	
@@ -45,7 +47,7 @@ public class Translator {
 			translated.load(in);//Try loading the current Language.
 		} catch(java.io.FileNotFoundException e) {
 			try {
-				InputStream in = new FileInputStream(respath+"res/language/english/UI/" + filename + ".txt");
+				InputStream in = new FileInputStream(respath+"res/language/english/UI/" + filename + ".properties");
 				translated.load(in);//If you can't, load English.
 			} catch(Exception e2) {
 				e2.printStackTrace();
@@ -66,6 +68,11 @@ public class Translator {
 		return m_instance;
 	}
 	
+	/**
+	 * Grabs the Properties file from a filename
+	 * @param filename
+	 * @return
+	 */
 	public static Properties translate(String filename){
 		return Translator.getInstance().translateText(filename);
 	}
