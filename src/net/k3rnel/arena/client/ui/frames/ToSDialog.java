@@ -43,8 +43,8 @@ public class ToSDialog extends Frame {
 		getContentPane().setY(getContentPane().getY() + 1);
 		m_bg = new Color(0, 0, 0, 70);
 		m_white = new Color(255, 255, 255);
-		Properties translated = Translator.translate("login");
-		this.setTitle(translated.get("terms")+"");
+		Properties translated = Translator.translate("gui");
+		this.setTitle(translated.get("register.terms")+"");
 		this.setLocation(128, 256);
 		this.setBackground(m_bg);
 		this.setResizable(false);
@@ -53,7 +53,7 @@ public class ToSDialog extends Frame {
 		m_info.setSize(280, 320);
 		m_info.setLocation(4, 4);
 		m_info.setWrapEnabled(true);
-		m_info.setText(translated.get("rules")+"");
+		m_info.setText(translated.get("misc.rules")+"");
 		m_info.setFont(GameClient.getFontSmall());
 		m_info.setBackground(m_bg);
 		m_info.setForeground(m_white);
@@ -65,8 +65,8 @@ public class ToSDialog extends Frame {
 	}
 	
 	public void reloadStrings(){
-		Properties translated = Translator.translate("login");
-		this.setTitle(translated.get("terms")+"");
-		m_info.setText(translated.get("rules")+"");
+		Properties translated = Translator.translate("gui");
+		this.setTitle(translated.get("register.terms")+"");
+		m_info.setText(translated.get("misc.rules")+"");
 	}
 }

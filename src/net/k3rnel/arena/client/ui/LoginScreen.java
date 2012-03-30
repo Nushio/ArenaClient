@@ -66,7 +66,7 @@ public class LoginScreen extends Window {
 			respath="";
 		try {
 			Properties translated = new Properties();
-			translated = Translator.translate("login");
+			translated = Translator.translate("gui");
 			/*
 			 * Load the background image
 			 */
@@ -109,7 +109,7 @@ public class LoginScreen extends Window {
 			m_terms = new ToSDialog();
 			this.add(m_terms);
 			
-			m_openAbout = new Button(translated.get("about")+"");
+			m_openAbout = new Button(translated.get("login.about")+"");
 			m_openAbout.setSize(64, 32);
 			m_openAbout.setLocation(m_gameClient.getWidth() - 64 - 8, 8);
 			m_openAbout.setVisible(false);
@@ -120,7 +120,7 @@ public class LoginScreen extends Window {
 			});
 			this.add(m_openAbout);
 			
-			m_openToS = new Button(translated.get("tos")+"");
+			m_openToS = new Button(translated.get("login.tos")+"");
 			m_openToS.setSize(64, 32);
 			m_openToS.setLocation(m_gameClient.getWidth() - 64 - 8, 40);
 			m_openToS.setVisible(false);

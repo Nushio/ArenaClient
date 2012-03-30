@@ -48,17 +48,17 @@ public class RegisterDialog extends Frame{
 	public RegisterDialog() {
 		getContentPane().setX(getContentPane().getX() - 1);
 		getContentPane().setY(getContentPane().getY() + 1);
-		Properties translated = Translator.translate("login");
+		Properties translated = Translator.translate("gui");
 		this.setVisible(false);
 		this.setSize(320, 300);
 		this.setBackground(new Color(0, 0, 0, 140));
-		this.setTitle(translated.get("registration")+"");
+		this.setTitle(translated.get("register.registration")+"");
 		this.getTitleBar().getCloseButton().setVisible(false);
 		this.setLocation(420, 220);
 		this.setResizable(false);
 		this.setDraggable(false);
 		
-		m_u = new Label(translated.get("username")+"");
+		m_u = new Label(translated.get("register.username")+"");
 		m_u.pack();
 		m_u.setLocation(4, 4);
 		m_u.setFont(GameClient.getFontSmall());
@@ -72,7 +72,7 @@ public class RegisterDialog extends Frame{
 		m_username.grabFocus();
 		this.add(m_username);
 		
-		m_p = new Label(translated.get("password")+"");
+		m_p = new Label(translated.get("register.password")+"");
 		m_p.pack();
 		m_p.setLocation(4, 52);
 		m_p.setFont(GameClient.getFontSmall());
@@ -87,7 +87,7 @@ public class RegisterDialog extends Frame{
 		m_password.setVisible(true);
 		this.add(m_password);
 		
-		m_cp = new Label(translated.get("passconfirm")+"");
+		m_cp = new Label(translated.get("register.passconfirm")+"");
 		m_cp.pack();
 		m_cp.setLocation(172, 52);
 		m_cp.setFont(GameClient.getFontSmall());
@@ -102,7 +102,7 @@ public class RegisterDialog extends Frame{
 		m_confirmPass.setVisible(true);
 		this.add(m_confirmPass);
 		
-		m_e = new Label(translated.get("email")+"");
+		m_e = new Label(translated.get("register.email")+"");
 		m_e.pack();
 		m_e.setLocation(4, 102);
 		m_e.setFont(GameClient.getFontSmall());
@@ -115,7 +115,7 @@ public class RegisterDialog extends Frame{
 		m_email.setVisible(true);
 		this.add(m_email);
 		
-		m_ce = new Label(translated.get("emailconfirm")+"");
+		m_ce = new Label(translated.get("register.emailconfirm")+"");
 		m_ce.pack();
 		m_ce.setLocation(172, 102);
 		m_ce.setFont(GameClient.getFontSmall());
@@ -128,14 +128,14 @@ public class RegisterDialog extends Frame{
 		m_confirmEmail.setVisible(true);
 		this.add(m_confirmEmail);
 		
-		m_tos = new Label(translated.get("terms")+"");
+		m_tos = new Label(translated.get("register.terms")+"");
 		m_tos.pack();
 		m_tos.setLocation(102, 166);
 		m_tos.setFont(GameClient.getFontSmall());
 		m_tos.setForeground(m_white);
 		this.add(m_tos);
 		
-		m_terms = new Button(translated.get("tosagree")+"");
+		m_terms = new Button(translated.get("register.tosagree")+"");
 		m_terms.setSize(128, 24);
 		m_terms.setLocation(95, 186);
 		m_terms.addActionListener(new ActionListener() {
@@ -145,7 +145,7 @@ public class RegisterDialog extends Frame{
 		});
 		this.add(m_terms);
 		
-		m_register = new Button(translated.get("register")+"");
+		m_register = new Button(translated.get("register.register")+"");
 		m_register.setSize(64, 24);
 		m_register.setLocation(96, 228);
 		m_register.addActionListener(new ActionListener() {
@@ -155,7 +155,7 @@ public class RegisterDialog extends Frame{
 		});
 		this.add(m_register);
 		
-		m_cancel = new Button(translated.get("cancel")+"");
+		m_cancel = new Button(translated.get("register.cancel")+"");
 		m_cancel.setSize(64, 24);
 		m_cancel.setLocation(160, 228);
 		m_cancel.addActionListener(new ActionListener() {
@@ -170,7 +170,7 @@ public class RegisterDialog extends Frame{
 	 * Registers the player
 	 */
 	private void register() {
-		Properties translated = Translator.translate("login");
+		Properties translated = Translator.translate("gui");
 		if(m_username.getText() != null
 				&& m_username.getText().length() >= 4 && m_username.getText().length() <= 12) {
 			if(m_password.getText() != null & !m_password.getText().equalsIgnoreCase("")
@@ -184,16 +184,16 @@ public class RegisterDialog extends Frame{
 							GameClient.getInstance().getPacketGenerator().register(m_username.getText(),
 									m_password.getText(), m_email.getText());
 					} else {
-						GameClient.messageDialog(translated.get("accepttos")+"", GameClient.getInstance().getDisplay());
+						GameClient.messageDialog(translated.get("error.accepttos")+"", GameClient.getInstance().getDisplay());
 					}
 				} else {
-					GameClient.messageDialog(translated.get("invalidemail")+"", GameClient.getInstance().getDisplay());
+					GameClient.messageDialog(translated.get("error.invalidemail")+"", GameClient.getInstance().getDisplay());
 				}
 			} else {
-				GameClient.messageDialog(translated.get("passnotmatch")+"", GameClient.getInstance().getDisplay());
+				GameClient.messageDialog(translated.get("error.passnotmatch")+"", GameClient.getInstance().getDisplay());
 			}
 		} else {
-			GameClient.messageDialog(translated.get("badusername")+"", GameClient.getInstance().getDisplay());
+			GameClient.messageDialog(translated.get("error.badusername")+"", GameClient.getInstance().getDisplay());
 		}
 	}
 	
@@ -254,16 +254,16 @@ public class RegisterDialog extends Frame{
 	}
 	
 	public void reloadStrings(){
-		Properties translated = Translator.translate("login");
-		this.setTitle(translated.get("registration")+"");
-		m_u.setText(translated.get("username")+"");
-		m_p.setText(translated.get("password")+"");
-		m_cp.setText(translated.get("passconfirm")+"");
-		m_e.setText(translated.get("email")+"");
-		m_ce.setText(translated.get("emailconfirm")+"");
-		m_tos.setText(translated.get("terms")+"");
-		m_terms.setText(translated.get("tosagree")+"");
-		m_register.setText(translated.get("register")+"");
-		m_cancel.setText(translated.get("cancel")+"");
+		Properties translated = Translator.translate("gui");
+		this.setTitle(translated.get("register.registration")+"");
+		m_u.setText(translated.get("register.username")+"");
+		m_p.setText(translated.get("register.password")+"");
+		m_cp.setText(translated.get("register.passconfirm")+"");
+		m_e.setText(translated.get("register.email")+"");
+		m_ce.setText(translated.get("register.emailconfirm")+"");
+		m_tos.setText(translated.get("register.terms")+"");
+		m_terms.setText(translated.get("register.tosagree")+"");
+		m_register.setText(translated.get("register.register")+"");
+		m_cancel.setText(translated.get("register.cancel")+"");
 	}
 }

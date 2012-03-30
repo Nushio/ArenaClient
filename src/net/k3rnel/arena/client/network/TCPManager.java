@@ -55,17 +55,17 @@ public class TCPManager {
 			public void connected (Connection connection) {
 			}
 			public void received (Connection connection, Object object) {
-				java.util.Properties prop = net.k3rnel.arena.client.backend.Translator.getInstance().translateText("status");
+				java.util.Properties prop = net.k3rnel.arena.client.backend.Translator.getInstance().translateText("gui");
 				if(object instanceof LoginData){
 					LoginData data = (LoginData)object;
 					if(data.state == 0) {
-						GameClient.messageDialog((String)(prop.get("login"+data.state)), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog((String)(prop.get("status.login"+data.state)), GameClient.getInstance().getDisplay());
 						//Login.
 					}
 					else if(data.state > 0)
-						GameClient.messageDialog((String)(prop.get("login"+data.state)), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog((String)(prop.get("status.login"+data.state)), GameClient.getInstance().getDisplay());
 					else
-						GameClient.messageDialog(((String)(prop.get("logindefault"))).replaceFirst("{num}",data.state+""), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog(((String)(prop.get("status.logindefault"))).replaceFirst("{num}",data.state+""), GameClient.getInstance().getDisplay());
 					System.out.println(data.state);
 					m_game.getLoginScreen().setVisible(false);
 					m_game.getLoadingScreen().setVisible(false);
@@ -77,13 +77,13 @@ public class TCPManager {
 					RegistrationData data = (RegistrationData)object;
 					System.out.println(data.state);
 					if(data.state == 0) {
-						GameClient.messageDialog((String)(prop.get("register"+data.state)), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog((String)(prop.get("status.register"+data.state)), GameClient.getInstance().getDisplay());
 						//Login.
 					}
 					else if(data.state > 0)
-						GameClient.messageDialog((String)(prop.get("register"+data.state)), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog((String)(prop.get("status.register"+data.state)), GameClient.getInstance().getDisplay());
 					else
-						GameClient.messageDialog(((String)(prop.get("registerdefault"))).replaceFirst("{num}",data.state+""), GameClient.getInstance().getDisplay());
+						GameClient.messageDialog(((String)(prop.get("status.registerdefault"))).replaceFirst("{num}",data.state+""), GameClient.getInstance().getDisplay());
 					m_game.getLoadingScreen().setVisible(false);
 					m_game.getLoginScreen().showLogin();
 				}
